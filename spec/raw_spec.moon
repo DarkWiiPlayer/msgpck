@@ -1,10 +1,11 @@
+package.path = "?.lua;?/init.lua;" .. package.path
 hex = (str) -> str\gsub(".", => string.format("0x%02x ", @byte!))\gsub("%s+$", '')
 
 describe "raw module", ->
 	for implementation in *{"pack", "ffi", "native"}
-		before_each -> export raw = require "msgpck.raw.#{implementation}"
+		describe "##{implementation} implementation", ->
+			before_each -> export raw = require "msgpck.raw.#{implementation}"
 
-		describe "#{implementation} implementation ##{implementation}", ->
 			it "should return a module", ->
 				assert.is.table raw
 
