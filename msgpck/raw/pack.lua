@@ -2,6 +2,8 @@
 -- All conversions in this module assume the passed data is of the correct format and within the correct range.
 -- @module msgpck.lua.raw
 
+assert(string.pack, "Could not find string.pack function!")
+
 local major, minor = _VERSION:match("(%d+)%.(%d+)")
 major, minor = tonumber(major), tonumber(minor)
 
